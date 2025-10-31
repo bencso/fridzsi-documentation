@@ -1,73 +1,105 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: 'Fridzsi',
-  tagline: 'Fridzsi are cool',
-  favicon: 'img/favicon.ico',
+  title: "Fridzsi",
+  tagline: "A Fridzsi a te intelligens hűtőd",
+  favicon: "img/favicon.ico",
   future: {
     v4: true,
   },
-  url: 'https:/bencso.hu',
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
-  organizationName: 'Bencso',
-  projectName: 'fridzsi',
-  onBrokenLinks: 'throw',
+  url: "https://bencso.hu",
+  baseUrl: "/",
+  organizationName: "Bencso",
+  projectName: "fridzsi",
+  onBrokenLinks: "throw",
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "hu",
+    locales: ["hu", "en"],
+    path: "i18n",
+    localeConfigs: {
+      hu: {
+        label: "Magyar",
+        direction: "ltr",
+        htmlLang: "hu-HU",
+        calendar: "gregory",
+        path: "hu",
+        translate: false,
+        baseUrl: "/",
+      },
+      en: {
+        label: "English",
+        direction: "ltr",
+        htmlLang: "en-US",
+        calendar: "gregory",
+        path: "en",
+        translate: true,
+        baseUrl: "/en/",
+      },
+    },
   },
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          sidebarPath: require.resolve("./sidebars.ts"),
         },
-        blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve("./src/css/custom.css"),
+        },
+        sitemap: {
+          lastmod: "date",
+          changefreq: "weekly",
+          priority: 0.5,
+          ignorePatterns: ["/tags/**"],
+          filename: "sitemap.xml",
+          createSitemapItems: async (params) => {
+            const { defaultCreateSitemapItems, ...rest } = params;
+            const items = await defaultCreateSitemapItems(rest);
+            return items.filter((item) => item.url !== "/");
+          },
         },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: "img/docusaurus-social-card.jpg",
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Fridzsi',
+      title: "Fridzsi",
+      style: "primary",
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'mainSidebar',
-          position: 'left',
-          label: 'Documentation',
+          type: "docSidebar",
+          sidebarId: "mainSidebar",
+          position: "left",
+          label: "Dokumentáció",
         },
         {
-          href: 'https://github.com/bencso/fridzsi',
-          label: 'GitHub',
-          position: 'right',
+          type: "localeDropdown",
+          position: "right",
+        },
+        {
+          href: "https://github.com/bencso/fridzsi",
+          label: "GitHub",
+          position: "right",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Socials',
+          title: "Közösségi oldalak",
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/bencso/fridzsi',
+              label: "GitHub",
+              href: "https://github.com/bencso/fridzsi",
             },
           ],
         },
