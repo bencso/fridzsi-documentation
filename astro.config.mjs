@@ -11,7 +11,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: "Első lépések",
-					autogenerate: { directory: 'getting-started' },
+					autogenerate: { directory: 'docs/getting-started' },
 				},
 			],
 		}),
