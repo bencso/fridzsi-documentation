@@ -13,4 +13,4 @@
 | `npm run astro ...`       | Astro-s parancsok futtatása, mint például: `astro add`, `astro check` |
 
 # Fridzsi - Mobilalkalmazás repository-ja
-[Az alábbi linken található meg](github.com/bencso/fridzsi)
+[Az alábbi linken található meg](https://github.com/bencso/fridzsi)
