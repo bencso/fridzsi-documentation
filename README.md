@@ -29,7 +29,7 @@ A fő alkalmazás repository-ja: [bencso/fridzsi](https://github.com/bencso/frid
 - NestJS - Backend API
 - TypeScript - Fejlesztési nyelv
 
-## 🚧 Státusz
+### 🚧 Státusz
 
 A projekt jelenleg **FEJLESZTÉS ALATT** - a dokumentáció készítése folyamatban. A Fridzsi alkalmazás szünetel **2026 Q2**-ig, így a dokumentáció is párhuzamosan fejlődik majd az alkalmazással.
 
